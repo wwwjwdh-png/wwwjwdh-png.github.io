@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>马上开启您的极致体验</title>
+    <title>缘聚同城 - 发现身边的缘分</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,7 +14,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
@@ -24,30 +24,69 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         header {
             text-align: center;
             padding: 60px 20px;
-            background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
         }
         
         h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .subtitle {
             font-size: 1.4rem;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
             opacity: 0.9;
         }
         
@@ -59,7 +98,7 @@
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: 40px;
-            color: #2c3e50;
+            color: #ff6b6b;
             position: relative;
         }
         
@@ -68,54 +107,112 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #ff6b6b, #ff8e8e);
             margin: 15px auto;
             border-radius: 2px;
         }
         
-        /* 轮播图样式 */
-        .carousel {
+        /* 用户展示轮播 */
+        .users-carousel {
             position: relative;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
         }
         
-        .carousel-inner {
+        .users-inner {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
+            padding: 20px 0;
         }
         
-        .carousel-item {
+        .user-group {
+            display: flex;
             min-width: 100%;
-            height: 450px;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .user-card {
+            flex: 0 0 280px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .user-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .user-photo {
+            height: 320px;
             background-size: cover;
             background-position: center;
+            position: relative;
+        }
+        
+        .user-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .user-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .user-age {
+            color: #ff6b6b;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .user-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background: #ffecec;
+            color: #ff6b6b;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
         }
         
         .carousel-control {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.9);
             border: none;
             width: 50px;
             height: 50px;
             border-radius: 50%;
             font-size: 1.5rem;
-            color: #333;
+            color: #ff6b6b;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
         }
         
         .carousel-control:hover {
             background: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-50%) scale(1.1);
         }
         
         .carousel-control.prev {
@@ -126,92 +223,131 @@
             right: 20px;
         }
         
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
+        /* 特色功能 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
         
-        .carousel-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .carousel-indicator.active {
+        .feature-card {
             background: white;
-            transform: scale(1.2);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
         }
         
-        /* 视频区样式 */
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b6b;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        /* 活动展示 */
+        .activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .activity-card {
+            background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            background: #f8f9fa;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .activity-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .activity-info {
             padding: 20px;
         }
         
-        .video-placeholder {
-            width: 100%;
-            height: 400px;
-            background: #2c3e50;
+        .activity-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .activity-meta {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            border-radius: 10px;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
         }
         
-        .video-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: #6a11cb;
-        }
-        
-        .video-placeholder p {
-            font-size: 1.2rem;
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        /* 引导区样式 */
+        /* 引导区 */
         .cta-section {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2364&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
         }
         
         .cta-title {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            position: relative;
         }
         
         .cta-description {
             font-size: 1.2rem;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto 40px;
             opacity: 0.9;
+            position: relative;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
         }
         
         .cta-button {
             display: inline-block;
-            padding: 18px 45px;
+            padding: 15px 35px;
             background: white;
-            color: #f5576c;
-            font-size: 1.3rem;
+            color: #667eea;
+            font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
@@ -219,12 +355,17 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        .cta-button.primary {
+            background: #ff6b6b;
+            color: white;
         }
         
-        /* 二维码页面样式 */
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 二维码弹窗 */
         .qr-modal {
             display: none;
             position: fixed;
@@ -232,10 +373,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(102, 126, 234, 0.95);
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
         
         .qr-content {
@@ -246,6 +388,7 @@
             max-width: 400px;
             width: 90%;
             animation: modalFade 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
         @keyframes modalFade {
@@ -256,7 +399,7 @@
         .qr-title {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #667eea;
         }
         
         .qr-code {
@@ -268,12 +411,12 @@
             align-items: center;
             justify-content: center;
             border-radius: 10px;
-            border: 1px solid #eee;
+            border: 2px solid #eee;
         }
         
         .qr-code i {
             font-size: 5rem;
-            color: #6a11cb;
+            color: #667eea;
         }
         
         .qr-description {
@@ -282,7 +425,7 @@
         }
         
         .close-modal {
-            background: #6a11cb;
+            background: #667eea;
             color: white;
             border: none;
             padding: 12px 30px;
@@ -293,76 +436,8 @@
         }
         
         .close-modal:hover {
-            background: #2575fc;
+            background: #ff6b6b;
             transform: translateY(-2px);
-        }
-        
-        /* GitHub Pages 指南样式 */
-        .guide-section {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 15px;
-            margin-top: 40px;
-        }
-        
-        .guide-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: #2c3e50;
-            text-align: center;
-        }
-        
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        
-        .step {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .step-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        
-        .step-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        
-        .step-description {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .step-image {
-            width: 100%;
-            border-radius: 8px;
-            margin-top: 10px;
-            border: 1px solid #eee;
-        }
-        
-        .note {
-            background: #fff9e6;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 0 8px 8px 0;
         }
         
         /* 响应式设计 */
@@ -379,20 +454,35 @@
                 padding: 40px 20px;
             }
             
-            .carousel-item {
-                height: 300px;
+            .user-group {
+                flex-wrap: wrap;
             }
             
-            .video-placeholder {
-                height: 250px;
+            .user-card {
+                flex: 0 0 calc(50% - 10px);
             }
             
-            .cta-title {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-card {
+                flex: 0 0 100%;
+            }
+            
+            .stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
                 font-size: 2rem;
-            }
-            
-            .steps {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -400,89 +490,222 @@
 <body>
     <div class="container">
         <header>
-            <h1>创新产品解决方案</h1>
-            <p class="subtitle">专为现代企业设计的智能平台，提升效率、优化流程、驱动增长</p>
+            <h1>缘聚同城</h1>
+            <p class="subtitle">发现身边的缘分，遇见心动的TA</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">50万+</div>
+                    <div class="stat-label">注册用户</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">城市覆盖</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1万+</div>
+                    <div class="stat-label">成功故事</div>
+                </div>
+            </div>
         </header>
         
         <section class="section">
-            <h2 class="section-title">产品展示</h2>
-            <div class="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3')"></div>
-                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3')"></div>
-                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3')"></div>
+            <h2 class="section-title">优质会员推荐</h2>
+            <div class="users-carousel">
+                <div class="users-inner">
+                    <!-- 第一组用户 -->
+                    <div class="user-group">
+                        <div class="user-card">
+                            <div class="user-photo" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                            <div class="user-info">
+                                <div class="user-name">林婉如</div>
+                                <div class="user-age">26岁 · 北京</div>
+                                <div class="user-tags">
+                                    <span class="tag">教师</span>
+                                    <span class="tag">温柔</span>
+                                </div>
+                                <div class="user-desc">喜欢旅行和阅读的文艺女生</div>
+                            </div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                            <div class="user-info">
+                                <div class="user-name">张明轩</div>
+                                <div class="user-age">29岁 · 上海</div>
+                                <div class="user-tags">
+                                    <span class="tag">工程师</span>
+                                    <span class="tag">幽默</span>
+                                </div>
+                                <div class="user-desc">热爱运动的阳光大男孩</div>
+                            </div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-photo" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                            <div class="user-info">
+                                <div class="user-name">陈雨婷</div>
+                                <div class="user-age">25岁 · 广州</div>
+                                <div class="user-tags">
+                                    <span class="tag">设计师</span>
+                                    <span class="tag">开朗</span>
+                                </div>
+                                <div class="user-desc">喜欢摄影和美食的创意女孩</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 第二组用户 -->
+                    <div class="user-group">
+                        <div class="user-card">
+                            <div class="user-photo" style="background-image: url('https://images.unsplash.com/photo-1504593811423-6dd665756598?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                            <div class="user-info">
+                                <div class="user-name">王浩然</div>
+                                <div class="user-age">31岁 · 深圳</div>
+                                <div class="user-tags">
+                                    <span class="tag">创业者</span>
+                                    <span class="tag">稳重</span>
+                                </div>
+                                <div class="user-desc">喜欢登山和投资的成熟男士</div>
+                            </div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-photo" style="background-image: url('https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                            <div class="user-info">
+                                <div class="user-name">赵雅静</div>
+                                <div class="user-age">27岁 · 杭州</div>
+                                <div class="user-tags">
+                                    <span class="tag">医生</span>
+                                    <span class="tag">知性</span>
+                                </div>
+                                <div class="user-desc">热爱音乐和烹饪的温柔女生</div>
+                            </div>
+                        </div>
+                        <div class="user-card">
+                            <div class="user-photo" style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                            <div class="user-info">
+                                <div class="user-name">刘子阳</div>
+                                <div class="user-age">28岁 · 成都</div>
+                                <div class="user-tags">
+                                    <span class="tag">程序员</span>
+                                    <span class="tag">真诚</span>
+                                </div>
+                                <div class="user-desc">喜欢游戏和电影的IT男生</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
                 <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
-                <div class="carousel-indicators">
-                    <div class="carousel-indicator active"></div>
-                    <div class="carousel-indicator"></div>
-                    <div class="carousel-indicator"></div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">平台特色</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="feature-title">同城匹配</h3>
+                    <p>智能推荐同城优质单身，让缘分不再遥远</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">实名认证</h3>
+                    <p>严格的身份验证，确保交友安全可靠</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="feature-title">智能推荐</h3>
+                    <p>基于兴趣和性格的精准匹配算法</p>
                 </div>
             </div>
         </section>
         
         <section class="section">
-            <h2 class="section-title">天赋展示视频</h2>
-            <div class="video-container">
-                <div class="video-placeholder">
-                    <i class="fas fa-play-circle"></i>
-                    <p>点击播放按钮免费观看</p>
+            <h2 class="section-title">同城活动</h2>
+            <div class="activities">
+                <div class="activity-card">
+                    <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                    <div class="activity-info">
+                        <h3 class="activity-title">周末读书分享会</h3>
+                        <div class="activity-meta">
+                            <span>本周六 14:00</span>
+                            <span>朝阳区咖啡馆</span>
+                        </div>
+                        <p>与志同道合的书友一起分享阅读心得</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                    <div class="activity-info">
+                        <h3 class="activity-title">户外徒步活动</h3>
+                        <div class="activity-meta">
+                            <span>本周日 08:00</span>
+                            <span>香山公园</span>
+                        </div>
+                        <p>一起感受大自然的魅力，结交新朋友</p>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80')"></div>
+                    <div class="activity-info">
+                        <h3 class="activity-title">美食探店之夜</h3>
+                        <div class="activity-meta">
+                            <span>下周五 19:00</span>
+                            <span>三里屯餐厅</span>
+                        </div>
+                        <p>品尝美食，畅聊人生，遇见有趣的灵魂</p>
+                    </div>
                 </div>
             </div>
         </section>
         
         <section class="cta-section">
-            <h2 class="cta-title">立即体验产品</h2>
-            <p class="cta-description">扫描二维码，获取您的定制体验</p>
-            <a href="#" class="cta-button" id="showQR">获取二维码</a>
+            <h2 class="cta-title">立即开启你的缘分之旅</h2>
+            <p class="cta-description">加入50万单身会员，遇见命中注定的TA</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button primary" id="showQR">立即注册</a>
+                <a href="#" class="cta-button">了解更多</a>
+            </div>
         </section>
-        
-            
+    </div>
+    
     <!-- 二维码弹窗 -->
     <div class="qr-modal" id="qrModal">
         <div class="qr-content">
-            <h3 class="qr-title">扫描二维码了解更多</h3>
+            <h3 class="qr-title">扫码下载APP</h3>
             <div class="qr-code">
                 <i class="fas fa-qrcode"></i>
             </div>
-            <p class="qr-description">扫描二维码，添加您的专属客服</p>
+            <p class="qr-description">扫描二维码下载缘聚同城APP<br>开启你的缘分之旅</p>
             <button class="close-modal" id="closeModal">关闭</button>
         </div>
     </div>
 
     <script>
-        // 轮播图功能
+        // 用户轮播功能
         document.addEventListener('DOMContentLoaded', function() {
-            const carouselInner = document.querySelector('.carousel-inner');
-            const carouselItems = document.querySelectorAll('.carousel-item');
+            const usersInner = document.querySelector('.users-inner');
+            const userGroups = document.querySelectorAll('.user-group');
             const prevButton = document.querySelector('.carousel-control.prev');
             const nextButton = document.querySelector('.carousel-control.next');
-            const indicators = document.querySelectorAll('.carousel-indicator');
             
             let currentIndex = 0;
-            const totalItems = carouselItems.length;
+            const totalGroups = userGroups.length;
             
             function updateCarousel() {
-                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-                
-                // 更新指示器状态
-                indicators.forEach((indicator, index) => {
-                    if (index === currentIndex) {
-                        indicator.classList.add('active');
-                    } else {
-                        indicator.classList.remove('active');
-                    }
-                });
+                usersInner.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
             
             function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalItems;
+                currentIndex = (currentIndex + 1) % totalGroups;
                 updateCarousel();
             }
             
             function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                currentIndex = (currentIndex - 1 + totalGroups) % totalGroups;
                 updateCarousel();
             }
             
@@ -490,19 +713,11 @@
             nextButton.addEventListener('click', nextSlide);
             prevButton.addEventListener('click', prevSlide);
             
-            // 指示器点击事件
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateCarousel();
-                });
-            });
-            
             // 自动轮播
             let autoSlide = setInterval(nextSlide, 5000);
             
             // 鼠标悬停时暂停自动轮播
-            const carousel = document.querySelector('.carousel');
+            const carousel = document.querySelector('.users-carousel');
             carousel.addEventListener('mouseenter', () => {
                 clearInterval(autoSlide);
             });
